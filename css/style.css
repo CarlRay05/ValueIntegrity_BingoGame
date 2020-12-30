@@ -1,3 +1,11 @@
+:root{
+    --DFA-visonary-blue: #41b6e6;
+    --DFA-american-navy: #002f6c;
+    --DFA-barn-red: #9d2235;
+    --DFA-subtle-silver: #d9d9d9;
+    --DFA-milk-white: #ffffff;
+}
+
 body {
     font-family: arial, verdana, helvetica, sans-serif;
     margin: 0px;
@@ -8,7 +16,7 @@ body {
 
 table.card, table.win {
     text-align: center;
-    border: 2px solid #000;
+    border: 5px solid var(--DFA-barn-red);
     margin-left: auto;
     margin-right: auto;
     width: 728px;
@@ -17,11 +25,11 @@ table.card, table.win {
 }
 
 table.win {
-    border: 2px solid #0F0;
+    border: 3px solid var(--DFA-milk-white);
 }
 
 table.card td, table.win td {
-    border: 1px solid #000;
+    border: 3px solid var(--DFA-barn-red);
     width: 100px;
     height: 100px;
     padding: 2px;
@@ -30,7 +38,7 @@ table.card td, table.win td {
 }
 
 table.card td:hover, table.win td:hover {
-    background-color: #AAA;
+    background-color: var(--DFA-subtle-silver);
 }
 
 table.card td.clicked, table.win td.clicked {
@@ -38,12 +46,13 @@ table.card td.clicked, table.win td.clicked {
 }
 
 table.card td.clicked:hover, table.win td.clicked:hover {
-    ;
     background-color: #AAA;
 }
 
 table.card td.win, table.win td.win {
-    background-color: #0F0;
+    background-color: var(--DFA-barn-red);
+    color: var(--DFA-milk-white);
+    border: 3px solid var(--DFA-milk-white);
 }
 
 table.card td.freecell, table.win td.freecell {
