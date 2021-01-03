@@ -4,14 +4,16 @@
     --DFA-barn-red: #9d2235;
     --DFA-subtle-silver: #d9d9d9;
     --DFA-milk-white: #ffffff;
+
 }
 
 body {
-    font-family: arial, verdana, helvetica, sans-serif;
+    font-family: 'Oswald', sans-serif;
     margin: 0px;
     color: #000;
     background-color: #FFF;
     font-size: 20px;
+    
 }
 
 table.card, table.win {
