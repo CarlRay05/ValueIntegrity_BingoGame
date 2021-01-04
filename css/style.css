@@ -13,7 +13,7 @@ body {
     color: #000;
     background-color: #FFF;
     font-size: 20px;
-    
+    color: var(--DFA-barn-red);
 }
 
 table.card, table.win {
@@ -26,8 +26,17 @@ table.card, table.win {
     margin-bottom: 10px;
 }
 
+.howtoplay, h1{
+    color: #000000;
+}
+
 table.win {
     border: 3px solid var(--DFA-milk-white);
+}
+
+.free {
+    background-color: var(--DFA-barn-red);
+    color: var(--DFA-milk-white);
 }
 
 table.card td, table.win td {
