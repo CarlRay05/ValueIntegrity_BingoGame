@@ -43,14 +43,6 @@ function enable_clicks() {
         }
     }
 }
-function ext_targets() {
-    var anchors = document.getElementsByTagName("a");
-    for (var i = 0, a;(a = anchors[i]); i++) {
-        if (a.getAttribute("href") && !a.href.match(/buzzwordbingogame.com/) && !a.href.match(/bullshitbingo.net/)) {
-            a.target = "_blank";
-        }
-    }
-}
 function loader(func) {
     if (document.addEventListener) {
         window.addEventListener("load", func, false);
