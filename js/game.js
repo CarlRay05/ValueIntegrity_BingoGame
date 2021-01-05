@@ -58,4 +58,4 @@ function loader(func) {
     }
 }
 loader(enable_clicks);
-loader(ext_targets);
+// loader(ext_targets);
