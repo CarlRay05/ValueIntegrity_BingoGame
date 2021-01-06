@@ -22,6 +22,8 @@ th{
     color: var(--DFA-milk-white);
     border: none;
     font-size: 5em;
+    padding: none;
+    height: 1em;
 }
 
 table.card,
