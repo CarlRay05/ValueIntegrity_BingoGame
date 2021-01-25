@@ -1,253 +1,175 @@
-:root {
-	--DFA-visonary-blue: #41b6e6;
-	--DFA-american-navy: #002f6c;
-	--DFA-barn-red: #9d2235;
-	--DFA-subtle-silver: #d9d9d9;
-	--DFA-milk-white: #ffffff;
-}
+<style>
+        :root{
+            --DFA-visonary-blue: #41b6e6;
+            --DFA-american-navy: #002f6c;
+            --DFA-barn-red: #9d2235;
+            --DFA-subtle-silver: #d9d9d9;
+            --DFA-milk-white: #ffffff;
 
-body {
-    font-family: "ff-good-web-pro", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-	margin: 0px;
-	color: #000;
-	background-color: #fff;
-	font-size: 20px;
-	color: var(--DFA-barn-red);
-}
+        }
 
-th{
-    background-color: var(--DFA-barn-red);
-    color: var(--DFA-milk-white);
-    border: none;
-    font-size: 5em;
-    padding: none;
-    height: 1em;
-}
+        body {
+            font-family: Oswald, sans-serif;
+        }
 
-table.card,
-table.win {
-	text-align: center;
-	border: 5px solid var(--DFA-barn-red);
-	margin-left: auto;
-	margin-right: auto;
-	width: 728px;
-	height: 728px;
-	margin-bottom: 10px;
-}
+        hr {
+            border: none;
+            height: 2px;
+            color: #333; /* old IE */
+            background-color: #333; /* Modern Browsers */
+        }
 
-.howtoplay,
-h1 {
-	color: #000000;
-}
+        .gameContainer {
+            margin: auto;
+            width: 75%;
+        }
 
-table.win {
-	border: 3px solid var(--DFA-milk-white);
-}
+        @media (max-width: 1067px) {
+            .nonMobile {
+                display: none;
+            }
+        }
 
-.free {
-	background-color: var(--DFA-barn-red);
-	color: var(--DFA-milk-white);
-}
+        @media (min-width: 1068px) {
+            .mobile {
+                display: none;
+            }
+        }
 
-table.card td, table.win td {
-	outline: 3px solid var(--DFA-barn-red);
-	width: 100px;
-	height: 100px;
-	padding: 2px;
-	font-weight: bold;
-	font-size: 20px;
-}
+        .rules {
+            font-size: 20px;
+            font-weight: 400;
+        }
 
-table.card td:hover,
-table.win td:hover {
-	background-color: var(--DFA-subtle-silver);
-}
+        .game {
+            display: grid;
+            grid-template-columns: 1fr 25%;
+            grid-column-gap: 25px;
+            max-width: 925px;
+        }
+        
+        .board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            border: 2px solid var(--DFA-barn-red);
+        }
 
-table.card td.clicked,
-table.win td.clicked {
-	background-color: #ccc;
-}
+        .box {
+            display: grid;
+            height: 125px;
+            justify-content: center;
+            align-content: center;
+            background-color: var(--DFA-milk-white);
+            border: 2px solid var(--DFA-barn-red);
+            cursor: pointer;
+            color: var(--DFA-barn-red);
+            font-weight: bold;
+            font-size: 20px;
+            padding: 2px;
+            letter-spacing: .5px;
+        }
 
-table.card td.clicked:hover,
-table.win td.clicked:hover {
-	background-color: #aaa;
-}
+        .box.blockedBox {
+            background-color: var(--DFA-barn-red);
+            color: white;
+            font-size: 100px;
+            letter-spacing: 5px;
+            cursor: initial;
+        }
 
-table.card td.win,
-table.win td.win {
-	background-color: var(--DFA-barn-red);
-	color: var(--DFA-milk-white);
-	border: 3px solid var(--DFA-milk-white);
-}
+        .box.correctAnswer {
+            background-color: var(--DFA-visonary-blue);
+            color: white;
+        }
 
-table.card td.freecell,
-table.win td.freecell {
-	font-weight: bold;
-	background-color: #ccc;
-	color: #000;
-	font-size: 20px;
-}
+        .box.gameOverCorrectAnswer {
+            background-color: var(--DFA-american-navy);    
+            color: white;
+            border: 2px solid var(--DFA-milk-white);
+        }
 
-hr {
-	color: #000;
-	background-color: #fff;
-	border: 1px dashed #ccc;
-	width: 90%;
-}
+        .question {
+            opacity: .5;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
 
-h1,
-.abouthead {
-	text-align: center;
-	margin-bottom: 0px;
-}
+        .question.activeQuestion {
+            opacity: 1;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 
-h2.abouthead {
-	margin-top: 0px;
-}
+        .modalContainer {
+            font-family: Oswald, sans-serif;
+        }
 
-ul {
-	padding-bottom: 20px;
-}
+        .modalHeader {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
 
-ul li {
-	padding-bottom: 5px;
-}
+        .modalText {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
 
-.howtoplay,
-.about,
-#intro {
-	text-align: center;
-	font-weight: bold;
-	margin: auto;
-	width: 728px;
-}
+        .modalButton, .modalButton:focus {
+            padding: 5px;
+            height: 36px;
+            width: 62px;
+            font-size: 16px;
+            font-family: Oswald, sans-serif;
+            background-color: var(--DFA-barn-red);
+            border-color: var(--DFA-barn-red);
+            color: var(--DFA-milk-white);
+        }
 
-#game_description {
-	text-align: center;
-	margin: auto;
-	width: 728px;
-}
+        .modalOkButton, .modalOkButton:focus {
+            width: 45px;
+        }
 
-.howtoplay,
-.about {
-	border: 0px;
-	text-align: left;
-	padding: 0px;
-	font-weight: normal;
-}
+        .modalInput {
+            padding: 3px 5px;
+            font-size: 18px;
+            width: 228px;
+            margin-right: 15px;
+            letter-spacing: .5px;
+            font-family: Oswald, sans-serif;
+        }
 
-.footer,
-.navbar,
-#legal,
-#share,
-#original {
-	font-weight: normal;
-	font-size: 20px;
-	text-align: center;
-	margin: 0;
-	width: 728px;
-	margin: auto;
-}
+        .modalError {
+            color: var(--DFA-barn-red);
+            font-size: 16px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
 
-#sopa,
-#sopaframe {
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	width: 728px;
-	height: 300px;
-	margin: auto;
-}
+        .modalDisabled {
+            opacity: 0.5;
+        }
 
-#legal {
-	color: #999;
-	background-color: #fff;
-	margin-bottom: 5px;
-}
+        .link, .link:visited {
+            color: var(--DFA-barn-red);
+            font-size: 16px;
+        }
 
-#share,
-#original,
-.center {
-	text-align: center;
-	margin: auto;
-	background-color: #fff;
-}
+        .ngdialog.ngdialog-theme-default .ngdialog-content {
+            width: 350px;
+        }
 
-.share {
-	margin-top: 15px;
-	height: 50px;
-	border: 1px;
-}
+        .spinner {
+            width: 18px;
+            height: 18px;
+            -webkit-animation:spin 3s linear infinite;
+            -moz-animation:spin 3s linear infinite;
+            animation:spin 3s linear infinite;
+        }
+        @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+        @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+        @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-#addthis_sharing_toolbox {
-	width: 728px;
-	margin: 10 auto;
-	margin-top: 15px;
-	background-color: #fff;
-}
-
-input {
-	width: 400px;
-}
-
-label {
-	padding-top: 10px;
-	font-weight: bold;
-	font-size: 20px;
-}
-
-img {
-	border: 0px;
-}
-
-#adbanner {
-	margin-right: auto;
-	margin-left: auto;
-	width: 728px;
-}
-
-.notice {
-	color: #f00;
-	background-color: #fff;
-}
-
-.url {
-	display: none;
-}
-
-@media print {
-	#intro,
-	.howtoplay,
-	.footer,
-	.navbar,
-	.contact,
-	hr,
-	#original,
-	#game_description {
-		display: none;
-	}
-
-	h1,
-	.abouthead,
-	.url {
-		display: block;
-		text-align: center;
-		margin-bottom: 0px;
-	}
-
-	.url {
-		font-size: 9pt;
-	}
-
-	#adbanner,
-	#share {
-		display: none;
-	}
-}
-
-#ECFormSubmit {
-	background-color: #fff;
-	color: #fff;
-}
+    </style>
