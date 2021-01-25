@@ -1,175 +1,231 @@
-<style>
-        :root{
-            --DFA-visonary-blue: #41b6e6;
-            --DFA-american-navy: #002f6c;
-            --DFA-barn-red: #9d2235;
-            --DFA-subtle-silver: #d9d9d9;
-            --DFA-milk-white: #ffffff;
+:root {
+	--DFA-visonary-blue: #41b6e6;
+	--DFA-american-navy: #002f6c;
+	--DFA-barn-red: #A30C33;
+	--DFA-subtle-silver: #d9d9d9;
+    --DFA-milk-white: #ffffff;
+    --DFA-midnight-black: #000000;
+    --DFA-slate-grey: #262626;
+}
 
-        }
+body {
+    font-family: Oswald, sans-serif;
+    background: var(--DFA-barn-red);
+    /* background: linear-gradient(140deg, rgba(163,12,51,1) 75%, rgba(238,49,36,1) 25% ); */
+    height: 100vh;
+    background-repeat: no-repeat;
+}
 
-        body {
-            font-family: Oswald, sans-serif;
-        }
+.highlightBox{
+    position: absolute;
+    top:0;
+    background-color: #EE3124;
+    width: 300px;
+    height: 20px;
+}
 
-        hr {
-            border: none;
-            height: 2px;
-            color: #333; /* old IE */
-            background-color: #333; /* Modern Browsers */
-        }
+.logo{
+    width: 500px;
+    padding-top: 50px;
+}
 
-        .gameContainer {
-            margin: auto;
-            width: 75%;
-        }
+.DFA_DripSeal img{
+    width: 450px;
+    position: fixed;
+    z-index: 1;
+    left: 700px;
+    top: 20px; 
+    display: none;
+}
 
-        @media (max-width: 1067px) {
-            .nonMobile {
-                display: none;
-            }
-        }
+hr {
+	border: none;
+	height: 2px;
+	color: #333; /* old IE */
+	background-color: #333; /* Modern Browsers */
+}
 
-        @media (min-width: 1068px) {
-            .mobile {
-                display: none;
-            }
-        }
+.gameContainer {
+	margin: auto;
+	width: 75%;
+}
 
-        .rules {
-            font-size: 20px;
-            font-weight: 400;
-        }
+@media (max-width: 1067px) {
+	.nonMobile {
+		display: none;
+	}
+}
 
-        .game {
-            display: grid;
-            grid-template-columns: 1fr 25%;
-            grid-column-gap: 25px;
-            max-width: 925px;
-        }
-        
-        .board {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            border: 2px solid var(--DFA-barn-red);
-        }
+@media (min-width: 1068px) {
+	.mobile {
+		display: none;
+	}
+}
 
-        .box {
-            display: grid;
-            height: 125px;
-            justify-content: center;
-            align-content: center;
-            background-color: var(--DFA-milk-white);
-            border: 2px solid var(--DFA-barn-red);
-            cursor: pointer;
-            color: var(--DFA-barn-red);
-            font-weight: bold;
-            font-size: 20px;
-            padding: 2px;
-            letter-spacing: .5px;
-        }
+.rules {
+	font-size: 20px;
+	font-weight: 400;
+}
 
-        .box.blockedBox {
-            background-color: var(--DFA-barn-red);
-            color: white;
-            font-size: 100px;
-            letter-spacing: 5px;
-            cursor: initial;
-        }
+.game {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-column-gap: 25px;
+	max-width: 925px;
+}
 
-        .box.correctAnswer {
-            background-color: var(--DFA-visonary-blue);
-            color: white;
-        }
+.board {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+    border: 2px solid var(--DFA-barn-red);
+    font-family: "ff-good-web-pro", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
 
-        .box.gameOverCorrectAnswer {
-            background-color: var(--DFA-american-navy);    
-            color: white;
-            border: 2px solid var(--DFA-milk-white);
-        }
+.box {
+	display: grid;
+	height: 125px;
+	justify-content: center;
+	align-content: center;
+	background-color: var(--DFA-milk-white);
+	border: 4px solid var(--DFA-barn-red);
+	cursor: pointer;
+	color: var(--DFA-slate-grey);
+	padding: 2px;
+    letter-spacing: .5px;
+    font-family: "ff-good-web-pro", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.35em;
+}
 
-        .question {
-            opacity: .5;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+.box.blockedBox {
+	background-color: var(--DFA-barn-red);
+	color: white;
+	font-size: 3em;
+	letter-spacing: 5px;
+    cursor: initial;
+    font-family: "ff-good-web-pro", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
 
-        .question.activeQuestion {
-            opacity: 1;
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+.box.correctAnswer {
+	background-color: var(--DFA-subtle-silver);
+    color:var(--DFA-barn-red);
+    
+}
 
-        .modalContainer {
-            font-family: Oswald, sans-serif;
-        }
+.box.gameOverCorrectAnswer {
+	background-color: var(--DFA-american-navy);
+	color: white;
+	border: 2px solid var(--DFA-milk-white);
+}
 
-        .modalHeader {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
+.question {
+	opacity: .5;
+	font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "ff-good-web-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
 
-        .modalText {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
+.question.activeQuestion {
+	opacity: 1;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--DFA-milk-white);
+    font-family: "ff-good-web-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
 
-        .modalButton, .modalButton:focus {
-            padding: 5px;
-            height: 36px;
-            width: 62px;
-            font-size: 16px;
-            font-family: Oswald, sans-serif;
-            background-color: var(--DFA-barn-red);
-            border-color: var(--DFA-barn-red);
-            color: var(--DFA-milk-white);
-        }
+.modalContainer {
+	font-family: Oswald, sans-serif;
+}
 
-        .modalOkButton, .modalOkButton:focus {
-            width: 45px;
-        }
+.modalHeader {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 
-        .modalInput {
-            padding: 3px 5px;
-            font-size: 18px;
-            width: 228px;
-            margin-right: 15px;
-            letter-spacing: .5px;
-            font-family: Oswald, sans-serif;
-        }
+.modalText {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
 
-        .modalError {
-            color: var(--DFA-barn-red);
-            font-size: 16px;
-            margin-top: 5px;
-            margin-left: 5px;
-        }
+.modalButton,
+.modalButton:focus {
+	padding: 5px;
+	height: 36px;
+	width: 62px;
+	font-size: 16px;
+	font-family: Oswald, sans-serif;
+	background-color: var(--DFA-barn-red);
+	border-color: var(--DFA-barn-red);
+	color: var(--DFA-milk-white);
+}
 
-        .modalDisabled {
-            opacity: 0.5;
-        }
+.modalOkButton,
+.modalOkButton:focus {
+	width: 45px;
+}
 
-        .link, .link:visited {
-            color: var(--DFA-barn-red);
-            font-size: 16px;
-        }
+.modalInput {
+	padding: 3px 5px;
+	font-size: 18px;
+	width: 228px;
+	margin-right: 15px;
+	letter-spacing: .5px;
+	font-family: Oswald, sans-serif;
+}
 
-        .ngdialog.ngdialog-theme-default .ngdialog-content {
-            width: 350px;
-        }
+.modalError {
+	color: var(--DFA-barn-red);
+	font-size: 16px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
 
-        .spinner {
-            width: 18px;
-            height: 18px;
-            -webkit-animation:spin 3s linear infinite;
-            -moz-animation:spin 3s linear infinite;
-            animation:spin 3s linear infinite;
-        }
-        @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-        @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-        @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.modalDisabled {
+	opacity: 0.5;
+}
 
-    </style>
+.link,
+.link:visited {
+	color: var(--DFA-barn-red);
+	font-size: 16px;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+	width: 350px;
+}
+
+.spinner {
+	width: 18px;
+	height: 18px;
+	-webkit-animation: spin 3s linear infinite;
+	-moz-animation: spin 3s linear infinite;
+	animation: spin 3s linear infinite;
+}
+@-moz-keyframes spin {
+	100% {
+		-moz-transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
