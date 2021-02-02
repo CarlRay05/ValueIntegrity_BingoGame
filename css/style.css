@@ -107,7 +107,7 @@ hr {
 	border: 4px solid var(--DFA-barn-red);
 	cursor: pointer;
 	color: var(--DFA-slate-grey);
-	padding: 2px;
+	padding: 0px 10px;
     letter-spacing: .5px;
     font-family: "ff-good-web-pro", sans-serif;
     font-weight: 700;
